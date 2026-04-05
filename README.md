@@ -4,7 +4,6 @@
 [](https://www.google.com/search?q=https://www.kuka.com/)
 [](https://www.google.com/search?q=%23)
 
-Developed at **OPmobility**, this project leverages a high-fidelity Digital Twin to optimize the robotic filament winding of glass fiber reinforced pressure vessels. By mirroring the physical robotic arm in a virtual environment, we addressed critical measurement inaccuracies and structural consistency challenges.
 
 ## 📌 Project Overview
 
