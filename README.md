@@ -23,7 +23,7 @@ To improve measurement accuracy for the rotary encoder, a **Gage Repeatability a
   * **The Solution:** Used KUKA.Sim to simulate varying winding speeds and tensions, identifying the $S/N$ ratio of the encoder data.
   * **Result:** Reduced measurement uncertainty by calibrating the encoder offset in the virtual environment before deployment.
 
-### 2\. Dome & Transition Consistency
+### 2\. Dome & Transition Section Consistency
 
 Maintaining the geodesic path is critical during the transition from the **Vessel Hoop** to the **Dome**.
 
