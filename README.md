@@ -45,38 +45,47 @@ Maintaining the geodesic path is critical during the transition from the **Vesse
 
 -----
 
-## 💻 Code Snippet: Path Velocity Scaling
-
-The following KRL logic (pseudo-code) demonstrates how winding speed is adjusted during the transition to the dome to maintain tension consistency.
+## 💻 Code for this simulation
+# Kuka Robot Lauguage (KRL) 
+<details>
+<summary><b>Click to view KRL Winding Logic</b></summary>
 
 ```krl
-;&ACCESS RVP
-;&REL 1
-DEF Winding_Transition( )
-  ; Initialize Winding Parameters
-  BAS(#PTP_PARAMS, 100)
-  $VEL.CP = 0.5 ; Standard hoop speed (m/s)
+[;&ACCESS RVP
+;&REL 32
+;&PARAM TEMPLATE = C:\KRC\Roboter\Template\vorgabe
+DEF Winding_Hydrogen_Vessel( )
+  ;-- Header: Syncing 6-Axis Arm with External Axis (E1) --
+  BAS (#INITMOV,0 )
+  $BASE = BASE_DATA[1]  ; Vessel Centerline
+  $TOOL = TOOL_DATA[1]  ; Filament Delivery Eye
+  $APO.CDIS = 0.5       ; High approximation for smooth winding
   
-  ; Move to Hoop-to-Dome Transition Point
-  PTP P_Hoop_End
+  ;-- Winding Parameters --
+  $VEL.CP = 0.8         ; Hoop winding speed (m/s)
+  $ACC.CP = 2.0
   
-  ; Slow down for the dome to ensure encoder accuracy
-  ; and prevent fiber slippage
-  $VEL.CP = 0.15 
-  LIN P_Dome_Start C_DIS
-  
-  ; Execute Geodesic Winding Path
-  FOR i = 1 TO 50
-    LIN Dome_Path[i] C_DIS
-    ; Logic to sync Rotary Encoder feedback
-    IF $IN[1] == TRUE THEN
-       ; Trigger Gage R&R Data Capture
-       Log_Encoder_Position()
-    ENDIF
+  ;-- Start Hoop Winding --
+  PTP {E1 0}            ; Home external axis
+  FOR I=1 TO 20
+    ; Syncing linear movement with rotation
+    LIN_REL {Z 10, E1 360} C_DIS 
   ENDFOR
-END
-```
 
+  ;-- Transition to Dome (Critical for Consistency) --
+  $VEL.CP = 0.2         ; Slow down for precision in dome transition
+  $ACC.CP = 0.5
+  
+  ; Trigger Gage R&R Log: Capture encoder position vs. Command
+  $OUT[1] = TRUE        ; Start data capture on high-speed task
+  LIN P_Dome_Entry C_DIS
+  
+  ; Complex geodesic path points generated from KUKA.Sim
+  LIN P_Dome_Apex C_DIS
+  LIN P_Dome_Exit C_DIS
+  
+  $OUT[1] = FALSE       ; End data capture
+END]
 -----
 
 ## 📈 Results & Impact
