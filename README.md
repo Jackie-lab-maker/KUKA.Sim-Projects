@@ -6,9 +6,6 @@
 
 
 ## 📌 Project Overview
-
-The primary objective was to create a "Single Source of Truth" between the virtual KUKA simulation and the physical winding cell. This allowed for rapid iteration on path planning and sensor validation without wasting expensive composite materials.
-
 ### Key Objectives
 
 1.  **Gage R\&R Study:** Validated the rotary encoder's accuracy regarding the filament winding angle.
