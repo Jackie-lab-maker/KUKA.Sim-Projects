@@ -97,11 +97,4 @@ END
 
 **Note:** All data, CAD models, and images associated with this project are the intellectual property of **OPmobility**. This repository contains sanitized code and documentation approved for public demonstration of technical competency.
 
-*For inquiries regarding the methodology, please contact the repository owner.*
-
------
-
-### How to use this for your profile:
-
-1.  **Images:** Since you mentioned the images are approved, place them in a `/media` folder and link them using `![Alt Text](media/your-image.png)`.
-2.  **Specifics:** Replace `P_Hoop_End` or specific variables with the actual names used in your KRL (KUKA Robot Language) files to show authenticity.
+*For inquiries regarding the methodology, please contact the repository owner.*m
