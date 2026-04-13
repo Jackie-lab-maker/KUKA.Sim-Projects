@@ -15,8 +15,6 @@
 </div>
 <div style="font-family: 'Courier New', Courier, monospace;">
 
-<h1>Project Name</h1>
-
 <h2>Table of Contents</h2>
 <ul>
   <li><a href="#section-1">Section 1</a>
